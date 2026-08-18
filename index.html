@@ -1,0 +1,3975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<!-- =========================================================
+     💍 SNEHA & SANU — WEDDING INVITATION
+     
+     ONE FILE WEBSITE
+     HTML + CSS + JAVASCRIPT
+========================================================= -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8f1e7">
+<meta name="description" content="Wedding Invitation">
+
+<title>Sanu & Sneha | Wedding Invitation</title>
+
+
+<!-- =========================================================
+     🔤 FONTS
+========================================================= -->
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+
+
+/* =========================================================
+   🎨 THEME COLORS — EDIT HERE
+========================================================= */
+
+:root{
+  --cream:#fbf6ee;
+  --paper:#fffdf9;
+  --gold:#b58a45;
+  --gold-light:#d7b875;
+  --wine:#641f2a;
+  --dark:#2d2522;
+  --muted:#756965;
+  --shadow:0 20px 60px rgba(45,37,34,.12);
+}
+
+
+/* =========================================================
+   🌐 BASIC SETTINGS
+========================================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--cream);
+  color:var(--dark);
+  font-family:'Montserrat',sans-serif;
+  overflow-x:hidden;
+}
+
+body.locked{
+  overflow:hidden;
+}
+
+button,
+a{
+  font-family:inherit;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+
+/* =========================================================
+   🔄 LOADER
+========================================================= */
+
+#loader{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:var(--cream);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+
+#loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.loader-content{
+  text-align:center;
+}
+
+.loader-cross{
+  color:var(--gold);
+  font-size:34px;
+  margin-bottom:15px;
+}
+
+.loader-content p{
+  letter-spacing:4px;
+  font-size:11px;
+  color:var(--muted);
+}
+
+
+/* =========================================================
+   💌 OPENING INVITATION
+========================================================= */
+
+#intro{
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,255,255,.8),
+      transparent 55%
+    ),
+    var(--cream);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
+}
+
+#intro.opened{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.invitation-card{
+  width:min(430px,94vw);
+  min-height:560px;
+
+  position:relative;
+
+  padding:50px 30px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  background:var(--paper);
+
+  border:1px solid rgba(181,138,69,.35);
+
+  box-shadow:var(--shadow);
+
+  overflow:hidden;
+}
+
+.invitation-card:before,
+.invitation-card:after{
+  content:"";
+
+  position:absolute;
+
+  width:90px;
+  height:90px;
+
+  border:1px solid var(--gold-light);
+
+  opacity:.7;
+}
+
+.invitation-card:before{
+  top:18px;
+  left:18px;
+
+  border-right:0;
+  border-bottom:0;
+}
+
+.invitation-card:after{
+  right:18px;
+  bottom:18px;
+
+  border-left:0;
+  border-top:0;
+}
+
+.invitation-inner{
+  max-width:340px;
+}
+
+.cross{
+  color:var(--gold);
+  font-size:36px;
+  margin-bottom:18px;
+}
+
+.small-title{
+  font-size:10px;
+  letter-spacing:5px;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+.intro-names{
+  font-family:'Great Vibes',cursive;
+
+  font-size:64px;
+
+  line-height:1.15;
+
+  color:var(--wine);
+
+  margin:18px 0;
+}
+
+.intro-date{
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:22px;
+
+  letter-spacing:2px;
+}
+
+.open-btn{
+  margin-top:35px;
+
+  border:1px solid var(--gold);
+
+  background:transparent;
+
+  color:var(--dark);
+
+  padding:14px 27px;
+
+  letter-spacing:3px;
+
+  font-size:10px;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.open-btn:hover{
+  background:var(--gold);
+  color:white;
+}
+
+
+/* =========================================================
+   🎵 MUSIC BUTTON
+========================================================= */
+
+.music-btn{
+  position:fixed;
+
+  right:18px;
+  bottom:18px;
+
+  width:48px;
+  height:48px;
+
+  z-index:1000;
+
+  border-radius:50%;
+
+  border:1px solid var(--gold);
+
+  background:rgba(255,253,249,.92);
+
+  color:var(--wine);
+
+  cursor:pointer;
+
+  box-shadow:0 8px 25px rgba(0,0,0,.1);
+}
+
+.music-btn.playing{
+  animation:spin 4s linear infinite;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   🌸 FLOATING PETALS
+========================================================= */
+
+.petals{
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  z-index:900;
+
+  overflow:hidden;
+}
+
+.petal{
+  position:absolute;
+
+  top:-30px;
+
+  width:10px;
+  height:7px;
+
+  background:#d9a8ad;
+
+  border-radius:100% 0 100% 0;
+
+  opacity:.55;
+
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+
+  0%{
+    transform:
+      translateY(-30px)
+      rotate(0);
+  }
+
+  100%{
+    transform:
+      translateY(110vh)
+      rotate(720deg);
+  }
+
+}
+
+
+/* =========================================================
+   🖼️ HERO
+========================================================= */
+
+.hero{
+  min-height:100vh;
+
+  position:relative;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      rgba(38,26,23,.32),
+      rgba(38,26,23,.5)
+    ),
+    url("images/couple.jpg")
+    center/cover;
+}
+
+.hero:after{
+  content:"";
+
+  position:absolute;
+
+  inset:20px;
+
+  border:1px solid rgba(255,255,255,.55);
+
+  pointer-events:none;
+}
+
+.hero-content{
+  position:relative;
+
+  z-index:2;
+
+  color:white;
+
+  padding:30px;
+}
+
+.hero-kicker{
+  font-size:10px;
+
+  letter-spacing:6px;
+
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-family:'Great Vibes',cursive;
+
+  font-size:clamp(
+    70px,
+    14vw,
+    145px
+  );
+
+  font-weight:400;
+
+  line-height:1;
+
+  margin:20px 0;
+}
+
+.hero-date{
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:24px;
+
+  letter-spacing:4px;
+}
+
+.scroll-note{
+  margin-top:55px;
+
+  font-size:9px;
+
+  letter-spacing:4px;
+
+  opacity:.8;
+}
+
+
+/* =========================================================
+   📐 GENERAL SECTIONS
+========================================================= */
+
+section{
+  padding:100px 20px;
+}
+
+.container{
+  width:min(1050px,100%);
+
+  margin:auto;
+}
+
+.section-heading{
+  text-align:center;
+
+  margin-bottom:55px;
+}
+
+.section-heading .symbol{
+  color:var(--gold);
+
+  font-size:25px;
+
+  margin-bottom:12px;
+}
+
+.section-heading h2{
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:48px;
+
+  font-weight:500;
+
+  color:var(--wine);
+}
+
+.section-heading p{
+  margin-top:10px;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+  letter-spacing:1px;
+}
+
+
+/* =========================================================
+   ✝️ BLESSING
+========================================================= */
+
+.blessing{
+  background:var(--paper);
+
+  text-align:center;
+}
+
+.blessing-box{
+  max-width:780px;
+
+  margin:auto;
+
+  padding:55px 30px;
+
+  border-top:
+    1px solid
+    var(--gold-light);
+
+  border-bottom:
+    1px solid
+    var(--gold-light);
+}
+
+.blessing-box p{
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:30px;
+
+  line-height:1.5;
+
+  font-style:italic;
+}
+
+.blessing-box small{
+  display:block;
+
+  margin-top:25px;
+
+  color:var(--gold);
+
+  letter-spacing:2px;
+
+  font-size:10px;
+}
+
+
+/* =========================================================
+   👰🤵 COUPLE
+========================================================= */
+
+.couple-grid{
+  display:grid;
+
+  grid-template-columns:
+    1fr 80px 1fr;
+
+  gap:30px;
+
+  align-items:center;
+}
+
+.person{
+  text-align:center;
+}
+
+.person img{
+  width:220px;
+  height:280px;
+
+  object-fit:cover;
+
+  border-radius:
+    120px
+    120px
+    8px
+    8px;
+
+  box-shadow:var(--shadow);
+
+  border:5px solid white;
+}
+
+.person h3{
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:34px;
+
+  color:var(--wine);
+
+  margin-top:20px;
+}
+
+.person p{
+  font-size:11px;
+
+  color:var(--muted);
+
+  margin-top:5px;
+}
+
+.and{
+  width:65px;
+  height:65px;
+
+  border:1px solid var(--gold);
+
+  border-radius:50%;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  color:var(--gold);
+
+  font-family:'Great Vibes',cursive;
+
+  font-size:30px;
+}
+
+
+/* =========================================================
+   ❤️ LOVE STORY
+========================================================= */
+
+.story{
+  background:var(--paper);
+}
+
+.timeline{
+  position:relative;
+
+  max-width:760px;
+
+  margin:auto;
+}
+
+.timeline:before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  bottom:0;
+
+  left:50%;
+
+  width:1px;
+
+  background:var(--gold-light);
+}
+
+.timeline-item{
+  width:50%;
+
+  padding:25px 40px;
+
+  position:relative;
+}
+
+.timeline-item:nth-child(even){
+  margin-left:50%;
+}
+
+.timeline-item:before{
+  content:"";
+
+  position:absolute;
+
+  top:35px;
+
+  width:10px;
+  height:10px;
+
+  background:var(--gold);
+
+  border-radius:50%;
+
+  box-shadow:
+    0 0 0 5px
+    var(--cream);
+}
+
+.timeline-item:nth-child(odd):before{
+  right:-5px;
+}
+
+.timeline-item:nth-child(even):before{
+  left:-5px;
+}
+
+.timeline-item h3{
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:28px;
+
+  color:var(--wine);
+}
+
+.timeline-item span{
+  font-size:10px;
+
+  letter-spacing:3px;
+
+  color:var(--gold);
+}
+
+.timeline-item p{
+  margin-top:8px;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+  line-height:1.7;
+}
+
+
+/* =========================================================
+   ⏳ COUNTDOWN
+========================================================= */
+
+.countdown-section{
+  background:var(--wine);
+
+  color:white;
+
+  text-align:center;
+}
+
+.countdown-section
+.section-heading h2{
+  color:white;
+}
+
+.countdown{
+  display:flex;
+
+  justify-content:center;
+
+  gap:15px;
+
+  flex-wrap:wrap;
+}
+
+.time-box{
+  min-width:100px;
+
+  padding:20px 15px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.3);
+}
+
+.time-box strong{
+  display:block;
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:45px;
+
+  font-weight:400;
+}
+
+.time-box span{
+  font-size:9px;
+
+  letter-spacing:3px;
+
+  opacity:.8;
+}
+
+
+/* =========================================================
+   ⛪ EVENTS
+========================================================= */
+
+.events-grid{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:25px;
+}
+
+.event-card{
+  background:var(--paper);
+
+  padding:40px 30px;
+
+  text-align:center;
+
+  box-shadow:var(--shadow);
+
+  border:
+    1px solid
+    rgba(181,138,69,.15);
+}
+
+.event-icon{
+  font-size:32px;
+
+  margin-bottom:15px;
+}
+
+.event-card h3{
+  font-family:'Cormorant Garamond',serif;
+
+  color:var(--wine);
+
+  font-size:30px;
+}
+
+.event-card .date{
+  margin:15px 0;
+
+  color:var(--gold);
+
+  font-size:12px;
+
+  letter-spacing:2px;
+}
+
+.event-card p{
+  color:var(--muted);
+
+  font-size:12px;
+
+  line-height:1.8;
+}
+
+.map-btn{
+  display:inline-block;
+
+  margin-top:20px;
+
+  padding:12px 20px;
+
+  border:
+    1px solid
+    var(--gold);
+
+  font-size:9px;
+
+  letter-spacing:2px;
+
+  transition:.3s;
+}
+
+.map-btn:hover{
+  background:var(--gold);
+
+  color:white;
+}
+
+
+/* =========================================================
+   📸 GALLERY
+========================================================= */
+
+.gallery{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:10px;
+}
+
+.gallery-item{
+  height:300px;
+
+  overflow:hidden;
+
+  cursor:pointer;
+}
+
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(5){
+  height:390px;
+}
+
+.gallery-item img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  transition:
+    transform .7s ease;
+}
+
+.gallery-item:hover img{
+  transform:scale(1.06);
+}
+
+
+/* =========================================================
+   🔍 LIGHTBOX
+========================================================= */
+
+#lightbox{
+  position:fixed;
+
+  inset:0;
+
+  z-index:3000;
+
+  background:
+    rgba(20,15,14,.94);
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+}
+
+#lightbox.show{
+  display:flex;
+}
+
+#lightbox img{
+  max-width:95%;
+
+  max-height:90vh;
+
+  object-fit:contain;
+}
+
+.close-lightbox{
+  position:absolute;
+
+  right:25px;
+  top:20px;
+
+  color:white;
+
+  font-size:35px;
+
+  cursor:pointer;
+}
+
+
+/* =========================================================
+   📍 LOCATION
+========================================================= */
+
+.location{
+  background:var(--paper);
+}
+
+.location-box{
+  text-align:center;
+
+  max-width:750px;
+
+  margin:auto;
+
+  padding:50px 25px;
+
+  border:
+    1px solid
+    var(--gold-light);
+}
+
+.location-box h3{
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:35px;
+
+  color:var(--wine);
+}
+
+.location-box p{
+  margin:15px 0;
+
+  color:var(--muted);
+}
+
+
+/* =========================================================
+   💌 RSVP
+========================================================= */
+
+.rsvp{
+  background:
+    linear-gradient(
+      rgba(100,31,42,.9),
+      rgba(100,31,42,.9)
+    ),
+    url("images/photo5.jpg")
+    center/cover;
+
+  color:white;
+}
+
+.rsvp .section-heading h2{
+  color:white;
+}
+
+.rsvp-form{
+  max-width:600px;
+
+  margin:auto;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+  width:100%;
+
+  padding:15px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.35);
+
+  background:
+    rgba(255,255,255,.08);
+
+  color:white;
+
+  outline:none;
+
+  font-family:inherit;
+}
+
+.form-group select option{
+  color:#222;
+}
+
+.form-group textarea{
+  min-height:120px;
+
+  resize:vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+  color:
+    rgba(255,255,255,.7);
+}
+
+.submit-btn{
+
+  width:100%;
+
+  padding:16px;
+
+  border:1px solid white;
+
+  background:white;
+
+  color:var(--wine);
+
+  cursor:pointer;
+
+  letter-spacing:3px;
+
+  font-size:10px;
+
+  transition:.3s;
+}
+
+.submit-btn:hover{
+  background:transparent;
+
+  color:white;
+}
+
+
+/* =========================================================
+   ✍️ GUESTBOOK
+========================================================= */
+
+.guestbook{
+  background:var(--paper);
+}
+
+.wishes{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:20px;
+}
+
+.wish{
+  padding:25px;
+
+  background:var(--cream);
+
+  text-align:center;
+}
+
+.wish p{
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:21px;
+
+  font-style:italic;
+}
+
+.wish small{
+  display:block;
+
+  margin-top:12px;
+
+  color:var(--gold);
+}
+
+
+/* =========================================================
+   👗 EXTRA INFORMATION
+========================================================= */
+
+.info-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:20px;
+}
+
+.info-card{
+  padding:30px 20px;
+
+  background:var(--paper);
+
+  text-align:center;
+
+  border:
+    1px solid
+    rgba(181,138,69,.2);
+}
+
+.info-card h3{
+  font-family:'Cormorant Garamond',serif;
+
+  color:var(--wine);
+
+  font-size:26px;
+
+  margin-bottom:10px;
+}
+
+.info-card p{
+  color:var(--muted);
+
+  font-size:11px;
+
+  line-height:1.7;
+}
+
+
+/* =========================================================
+   📲 SHARE
+========================================================= */
+
+.share{
+  text-align:center;
+}
+
+.share-btn{
+
+  display:inline-block;
+
+  padding:15px 25px;
+
+  background:var(--wine);
+
+  color:white;
+
+  border:none;
+
+  cursor:pointer;
+
+  letter-spacing:2px;
+
+  font-size:10px;
+}
+
+
+/* =========================================================
+   🖤 FOOTER
+========================================================= */
+
+footer{
+
+  padding:80px 20px;
+
+  background:#281d1b;
+
+  color:white;
+
+  text-align:center;
+}
+
+.footer-cross{
+
+  color:var(--gold-light);
+
+  font-size:30px;
+}
+
+footer h2{
+
+  font-family:'Great Vibes',cursive;
+
+  font-size:55px;
+
+  font-weight:400;
+
+  margin:15px 0;
+}
+
+footer p{
+
+  font-size:10px;
+
+  letter-spacing:3px;
+
+  opacity:.7;
+}
+
+.footer-date{
+
+  margin-top:20px;
+
+  color:var(--gold-light);
+}
+
+
+/* =========================================================
+   ✨ SCROLL REVEAL
+========================================================= */
+
+.reveal{
+
+  opacity:0;
+
+  transform:
+    translateY(35px);
+
+  transition:
+    opacity .9s ease,
+    transform .9s ease;
+}
+
+.reveal.visible{
+
+  opacity:1;
+
+  transform:none;
+}
+
+
+/* =========================================================
+   📱 MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+  section{
+    padding:75px 18px;
+  }
+
+  .hero h1{
+    font-size:75px;
+  }
+
+  .hero-date{
+    font-size:19px;
+  }
+
+  .section-heading h2{
+    font-size:40px;
+  }
+
+  .couple-grid{
+
+    grid-template-columns:1fr;
+
+    gap:25px;
+  }
+
+  .and{
+    margin:auto;
+  }
+
+  .events-grid,
+  .info-grid,
+  .wishes{
+
+    grid-template-columns:1fr;
+  }
+
+  .timeline:before{
+
+    left:12px;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(even){
+
+    width:100%;
+
+    margin-left:0;
+
+    padding-left:40px;
+
+    padding-right:5px;
+  }
+
+  .timeline-item:nth-child(odd):before,
+  .timeline-item:nth-child(even):before{
+
+    left:7px;
+
+    right:auto;
+  }
+
+  .gallery{
+
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .gallery-item,
+  .gallery-item:nth-child(2),
+  .gallery-item:nth-child(5){
+
+    height:240px;
+  }
+
+  .time-box{
+
+    min-width:72px;
+  }
+
+  .time-box strong{
+
+    font-size:35px;
+  }
+
+  .invitation-card{
+
+    min-height:520px;
+  }
+
+  .intro-names{
+
+    font-size:55px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body class="locked">
+
+
+<!-- =========================================================
+     ⚙️ CUSTOMER SETTINGS
+     
+     🔥 EDIT ONLY THIS SECTION FOR A NEW CUSTOMER
+========================================================= -->
+
+<script>
+
+/* =========================================================
+   👰🤵 COUPLE NAMES
+========================================================= */
+
+const brideName = "Sneha";
+
+const groomName = "Sanu";
+
+
+/* =========================================================
+   📅 WEDDING DATE
+========================================================= */
+
+const weddingDateText =
+  "13 September 2026";
+
+/*
+   IMPORTANT:
+   Use local wedding time.
+
+   Example:
+   2026-09-13T10:00:00
+*/
+
+const weddingDate =
+  "2026-09-13T10:00:00";
+
+
+/* =========================================================
+   ✝️ INVITATION TEXT
+========================================================= */
+
+const invitationSubtitle =
+  "Together With Their Families";
+
+const blessingText =
+  "Two lives become one beautiful journey, surrounded by love, faith and family.";
+
+const blessingBottomText =
+  "WITH GOD'S GRACE AND OUR FAMILIES' BLESSINGS";
+
+
+/* =========================================================
+   📖 BIBLE VERSE / BLESSING
+========================================================= */
+
+const bibleVerse =
+  "Two lives become one beautiful journey, surrounded by love, faith and family.";
+
+const bibleVerseReference =
+  "WITH GOD'S GRACE AND OUR FAMILIES' BLESSINGS";
+
+
+/* =========================================================
+   ⛪ CHURCH / CEREMONY
+========================================================= */
+
+const ceremonyTitle =
+  "Holy Matrimony";
+
+const churchName =
+  "St Mary's Orthodox Church";
+
+const churchLocation =
+  "Kattilapoovam, Thrissur";
+
+const ceremonyDate =
+  "SUNDAY • 13 SEPTEMBER 2026";
+
+
+/* =========================================================
+   🥂 RECEPTION
+========================================================= */
+
+const receptionName =
+  "St Mary's Malankara Catholic Church";
+
+const receptionLocation =
+  "Kattilapoovam, Thrissur";
+
+const receptionDate =
+  "SUNDAY • 13 SEPTEMBER 2026";
+
+
+/* =========================================================
+   📍 MAIN LOCATION
+========================================================= */
+
+const mainLocation =
+  "Kattilapoovam, Thrissur";
+
+const mainLocationMaps =
+  "https://www.google.com/maps/place/st.mary%27s+orthodox+church/data=!4m7!3m6!1s0x3ba7e7fd785e854b:0x5a1affc2fbde03e6!8m2!3d10.5961125!4d76.2902031!16s%2Fg%2F11vl5h1tvg!19sChIJS4VeeP3npzsR5gPe-8L_Glo?authuser=0&hl=en&rclk=1";
+
+
+/* =========================================================
+   🗺️ EXACT CHURCH GOOGLE MAPS LINK
+     
+   🔥 CHANGE THIS WHEN YOU HAVE THE EXACT LINK
+========================================================= */
+
+const churchMapsLink ="https://www.google.com/maps/place/st.mary%27s+orthodox+church/data=!4m7!3m6!1s0x3ba7e7fd785e854b:0x5a1affc2fbde03e6!8m2!3d10.5961125!4d76.2902031!16s%2Fg%2F11vl5h1tvg!19sChIJS4VeeP3npzsR5gPe-8L_Glo?authuser=0&hl=en&rclk=1";
+
+
+/* =========================================================
+   🗺️ EXACT RECEPTION GOOGLE MAPS LINK
+========================================================= */
+
+const receptionMapsLink =
+  "https://www.google.com/maps/place/St.+Mary%27s+Syrian+Malankara+Catholic+Church+Kattilapoovam/data=!4m7!3m6!1s0x3ba7e6131a6a5d85:0xfe9ea508bda1056c!8m2!3d10.6015877!4d76.2923371!16s%2Fg%2F11d_78gd3_!19sChIJhV1qGhPmpzsRbAWhvQilnv4?authuser=0&hl=en&rclk=1";
+
+
+/* =========================================================
+   🎵 MUSIC
+     
+   Put the file here:
+     
+   music/wedding.mp3
+========================================================= */
+
+const musicFile =
+  "music/wedding.mp3";
+
+
+/* =========================================================
+   📸 ALL GALLERY PHOTOS
+     
+   🔥 ADD MORE PHOTOS HERE
+     
+   Example:
+   "images/photo6.jpg",
+   "images/photo7.jpg",
+========================================================= */
+
+const photos = [
+
+  "sanu sneha1.jpeg",
+
+  "sanu sneha2.jpeg",
+
+  "sanu sneha3.jpeg",
+
+  
+];
+
+
+/* =========================================================
+   👰 BRIDE PHOTO
+========================================================= */
+
+const bridePhoto =
+  "sneha.jpeg";
+
+
+/* =========================================================
+   🤵 GROOM PHOTO
+========================================================= */
+
+const groomPhoto =
+  "sanu.jpeg";
+
+
+/* =========================================================
+   🖼️ HERO / MAIN PHOTO
+========================================================= */
+
+const heroPhoto =
+  "sanu sneha4.jpeg";
+
+
+/* =========================================================
+   ❤️ LOVE STORY — 1
+========================================================= */
+
+const story1Label =
+  "THE BEGINNING";
+
+const story1Title =
+  "First Meeting";
+
+const story1Text =
+  "Every beautiful story begins with a simple hello.";
+
+
+/* =========================================================
+   ❤️ LOVE STORY — 2
+========================================================= */
+
+const story2Label =
+  "A BEAUTIFUL JOURNEY";
+
+const story2Title =
+  "Growing Together";
+
+const story2Text =
+  "Through memories, laughter and countless moments, two hearts became one.";
+
+
+/* =========================================================
+   ❤️ LOVE STORY — 3
+========================================================= */
+
+const story3Label =
+  "FOREVER";
+
+const story3Title =
+  "The Promise";
+
+const story3Text =
+  "A promise to walk together through every chapter of life.";
+
+
+/* =========================================================
+   ❤️ LOVE STORY — 4
+========================================================= */
+
+const story4Label =
+  "13 SEPTEMBER 2026";
+
+const story4Title =
+  "The Wedding Day";
+
+const story4Text =
+  "The day their forever officially begins.";
+
+
+/* =========================================================
+   ✍️ GUESTBOOK — 1
+========================================================= */
+
+const wish1 =
+  "May your life together be filled with endless love and happiness.";
+
+
+/* =========================================================
+   ✍️ GUESTBOOK — 2
+========================================================= */
+
+const wish2 =
+  "Wishing you both a beautiful journey filled with unforgettable memories.";
+
+
+/* =========================================================
+   ✍️ GUESTBOOK — 3
+========================================================= */
+
+const wish3 =
+  "May God's grace guide you through every chapter of your life together.";
+
+
+/* =========================================================
+   👗 DRESS CODE
+========================================================= */
+
+const dressCodeText =
+  "Come dressed in your favourite elegant wedding attire.";
+
+
+/* =========================================================
+   🚗 PARKING
+========================================================= */
+
+const parkingText =
+  "Parking facilities will be available near the wedding venues.";
+
+
+/* =========================================================
+   ✈️ TRAVEL
+========================================================= */
+
+const travelText =
+  "For guests travelling from outside Thrissur, please plan your journey early.";
+
+
+/* =========================================================
+   📱 WHATSAPP RSVP NUMBER
+     
+   🔥 REPLACE THIS WITH CUSTOMER NUMBER
+     
+   India example:
+   919876543210
+========================================================= */
+
+const whatsappNumber =
+  "919999999999";
+
+
+/* =========================================================
+   💌 RSVP HEADING
+========================================================= */
+
+const rsvpTitle =
+  "WE WOULD LOVE TO CELEBRATE WITH YOU";
+
+
+</script>
+
+
+<!-- =========================================================
+     🔄 LOADER
+========================================================= -->
+
+<div id="loader">
+
+  <div class="loader-content">
+
+    <div class="loader-cross">
+      ✝
+    </div>
+
+    <p>
+      PREPARING YOUR INVITATION
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     💌 OPENING INVITATION
+========================================================= -->
+
+<div id="intro">
+
+  <div class="invitation-card">
+
+    <div class="invitation-inner">
+
+      <div class="cross">
+        ✝
+      </div>
+
+      <div
+        class="small-title"
+        id="introSubtitle"
+      >
+        Together With Their Families
+      </div>
+
+      <div class="intro-names">
+
+        <span id="introBride">
+          Sneha
+        </span>
+
+        <br>
+
+        &amp;
+
+        <br>
+
+        <span id="introGroom">
+          Sanu
+        </span>
+
+      </div>
+
+      <div
+        class="intro-date"
+        id="introDate"
+      >
+        13 • 09 • 2026
+      </div>
+
+      <button
+        class="open-btn"
+        onclick="openInvitation()"
+      >
+        OPEN INVITATION
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     🌸 PETALS
+========================================================= -->
+
+<div
+  class="petals"
+  id="petals"
+></div>
+
+
+<!-- =========================================================
+     🎵 MUSIC
+========================================================= -->
+
+<audio
+  id="weddingMusic"
+  loop
+  preload="none"
+>
+
+  <source
+    id="musicSource"
+    src=""
+    type="audio/mpeg"
+  >
+
+</audio>
+
+
+<button
+  class="music-btn"
+  id="musicBtn"
+  onclick="toggleMusic()"
+  aria-label="Toggle music"
+>
+  ♪
+</button>
+
+
+<!-- =========================================================
+     🖼️ HERO
+========================================================= -->
+
+<header
+  class="hero"
+  id="hero"
+>
+
+  <div class="hero-content reveal">
+
+    <div class="hero-kicker">
+      With Joy In Our Hearts
+    </div>
+
+    <h1>
+
+      <span id="heroBride">
+        Sneha
+      </span>
+
+      &amp;
+
+      <span id="heroGroom">
+        Sanu
+      </span>
+
+    </h1>
+
+    <div
+      class="hero-date"
+      id="heroDate"
+    >
+      13 September 2026
+    </div>
+
+    <div class="scroll-note">
+      SCROLL TO DISCOVER OUR STORY ↓
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- =========================================================
+     ✝️ BLESSING
+========================================================= -->
+
+<section class="blessing">
+
+  <div class="container">
+
+    <div class="blessing-box reveal">
+
+      <div class="cross">
+        ✝
+      </div>
+
+      <p id="blessingText">
+        Two lives become one beautiful journey,
+        surrounded by love, faith and family.
+      </p>
+
+      <small id="blessingBottom">
+        WITH GOD'S GRACE AND OUR FAMILIES' BLESSINGS
+      </small>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     👰🤵 THE COUPLE
+========================================================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-heading reveal">
+
+      <div class="symbol">
+        ✦
+      </div>
+
+      <h2>
+        The Couple
+      </h2>
+
+      <p>
+        THE BEGINNING OF FOREVER
+      </p>
+
+    </div>
+
+
+    <div class="couple-grid reveal">
+
+
+      <!-- 👰 BRIDE -->
+
+      <div class="person">
+
+        <img
+          id="bridePhoto"
+          src=""
+          alt="Bride"
+        >
+
+        <h3 id="brideName">
+          Sneha
+        </h3>
+
+        <p>
+          THE BRIDE
+        </p>
+
+      </div>
+
+
+      <!-- ❤️ -->
+
+      <div class="and">
+        &amp;
+      </div>
+
+
+      <!-- 🤵 GROOM -->
+
+      <div class="person">
+
+        <img
+          id="groomPhoto"
+          src=""
+          alt="Groom"
+        >
+
+        <h3 id="groomName">
+          Sanu
+        </h3>
+
+        <p>
+          THE GROOM
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     ❤️ LOVE STORY
+========================================================= -->
+
+<section class="story">
+
+  <div class="container">
+
+    <div class="section-heading reveal">
+
+      <div class="symbol">
+        ♡
+      </div>
+
+      <h2>
+        Our Story
+      </h2>
+
+      <p>
+        A JOURNEY WRITTEN WITH LOVE
+      </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+
+      <div class="timeline-item reveal">
+
+        <span id="story1Label">
+          THE BEGINNING
+        </span>
+
+        <h3 id="story1Title">
+          First Meeting
+        </h3>
+
+        <p id="story1Text">
+          Every beautiful story begins with a simple hello.
+        </p>
+
+      </div>
+
+
+      <div class="timeline-item reveal">
+
+        <span id="story2Label">
+          A BEAUTIFUL JOURNEY
+        </span>
+
+        <h3 id="story2Title">
+          Growing Together
+        </h3>
+
+        <p id="story2Text">
+          Through memories, laughter and countless moments,
+          two hearts became one.
+        </p>
+
+      </div>
+
+
+      <div class="timeline-item reveal">
+
+        <span id="story3Label">
+          FOREVER
+        </span>
+
+        <h3 id="story3Title">
+          The Promise
+        </h3>
+
+        <p id="story3Text">
+          A promise to walk together through every chapter of life.
+        </p>
+
+      </div>
+
+
+      <div class="timeline-item reveal">
+
+        <span id="story4Label">
+          13 SEPTEMBER 2026
+        </span>
+
+        <h3 id="story4Title">
+          The Wedding Day
+        </h3>
+
+        <p id="story4Text">
+          The day their forever officially begins.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     ⏳ COUNTDOWN
+========================================================= -->
+
+<section class="countdown-section">
+
+  <div class="container">
+
+    <div class="section-heading reveal">
+
+      <div class="symbol">
+        ✦
+      </div>
+
+      <h2>
+        Counting Down To Forever
+      </h2>
+
+      <p>
+        UNTIL THE BIG DAY
+      </p>
+
+    </div>
+
+
+    <div
+      class="countdown reveal"
+      id="countdown"
+    >
+
+      <div class="time-box">
+
+        <strong id="days">
+          00
+        </strong>
+
+        <span>
+          DAYS
+        </span>
+
+      </div>
+
+
+      <div class="time-box">
+
+        <strong id="hours">
+          00
+        </strong>
+
+        <span>
+          HOURS
+        </span>
+
+      </div>
+
+
+      <div class="time-box">
+
+        <strong id="minutes">
+          00
+        </strong>
+
+        <span>
+          MINUTES
+        </span>
+
+      </div>
+
+
+      <div class="time-box">
+
+        <strong id="seconds">
+          00
+        </strong>
+
+        <span>
+          SECONDS
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <p
+      id="weddingDayMessage"
+      style="
+        display:none;
+        margin-top:30px;
+        font-family:'Cormorant Garamond',serif;
+        font-size:28px;
+      "
+    >
+      Today is the day! ❤️
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     ⛪ WEDDING EVENTS
+========================================================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-heading reveal">
+
+      <div class="symbol">
+        ✝
+      </div>
+
+      <h2>
+        Wedding Details
+      </h2>
+
+      <p>
+        JOIN US AS WE BEGIN THIS NEW CHAPTER
+      </p>
+
+    </div>
+
+
+    <div class="events-grid">
+
+
+      <!-- ⛪ CEREMONY -->
+
+      <div class="event-card reveal">
+
+        <div class="event-icon">
+          ⛪
+        </div>
+
+        <h3 id="ceremonyTitle">
+          Holy Matrimony
+        </h3>
+
+        <div
+          class="date"
+          id="ceremonyDate"
+        >
+          SUNDAY • 13 SEPTEMBER 2026
+        </div>
+
+        <p>
+
+          <span id="churchName">
+            St Mary's Orthodox Church
+          </span>
+
+          <br>
+
+          <span id="churchLocation">
+            Kattilapoovam, Thrissur
+          </span>
+
+        </p>
+
+        <a
+          id="churchMapButton"
+          href="#"
+          class="map-btn"
+          target="_blank"
+          rel="noopener"
+        >
+          GET DIRECTIONS
+        </a>
+
+      </div>
+
+
+      <!-- 🥂 RECEPTION -->
+
+      <div class="event-card reveal">
+
+        <div class="event-icon">
+          🥂
+        </div>
+
+        <h3>
+          Reception
+        </h3>
+
+        <div
+          class="date"
+          id="receptionDate"
+        >
+          SUNDAY • 13 SEPTEMBER 2026
+        </div>
+
+        <p>
+
+          <span id="receptionName">
+            St Mary's Malankara Catholic Church
+          </span>
+
+          <br>
+
+          <span id="receptionLocation">
+            Kattilapoovam, Thrissur
+          </span>
+
+        </p>
+
+        <a
+          id="receptionMapButton"
+          href="#"
+          class="map-btn"
+          target="_blank"
+          rel="noopener"
+        >
+          GET DIRECTIONS
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     📸 GALLERY
+========================================================= -->
+
+<section class="story">
+
+  <div class="container">
+
+    <div class="section-heading reveal">
+
+      <div class="symbol">
+        ♡
+      </div>
+
+      <h2>
+        Moments We Cherish
+      </h2>
+
+      <p>
+        A FEW MEMORIES FROM OUR JOURNEY
+      </p>
+
+    </div>
+
+
+    <div
+      class="gallery"
+      id="gallery"
+    ></div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     🔍 LIGHTBOX
+========================================================= -->
+
+<div
+  id="lightbox"
+  onclick="closeLightbox()"
+>
+
+  <span class="close-lightbox">
+    &times;
+  </span>
+
+  <img
+    id="lightboxImage"
+    src=""
+    alt="Full screen photo"
+  >
+
+</div>
+
+
+<!-- =========================================================
+     📍 LOCATION
+========================================================= -->
+
+<section class="location">
+
+  <div class="container">
+
+    <div class="section-heading reveal">
+
+      <div class="symbol">
+        ⌖
+      </div>
+
+      <h2>
+        Find Us
+      </h2>
+
+      <p id="mainLocationText">
+        KATTILAPOOVAM • THRISSUR
+      </p>
+
+    </div>
+
+
+    <div class="location-box reveal">
+
+      <div class="cross">
+        ✝
+      </div>
+
+      <h3 id="locationName">
+        Kattilapoovam
+      </h3>
+
+      <p id="locationAddress">
+        Thrissur, Kerala
+      </p>
+
+      <p>
+        We look forward to celebrating this special day
+        with our loved ones.
+      </p>
+
+      <a
+        id="mainMapButton"
+        class="map-btn"
+        href="#"
+        target="_blank"
+        rel="noopener"
+      >
+        OPEN LOCATION IN MAPS
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     💌 RSVP
+========================================================= -->
+
+<section class="rsvp">
+
+  <div class="container">
+
+    <div class="section-heading reveal">
+
+      <div class="symbol">
+        ♡
+      </div>
+
+      <h2>
+        RSVP
+      </h2>
+
+      <p id="rsvpSubtitle">
+        WE WOULD LOVE TO CELEBRATE WITH YOU
+      </p>
+
+    </div>
+
+
+    <form
+      class="rsvp-form reveal"
+      onsubmit="submitRSVP(event)"
+    >
+
+      <div class="form-group">
+
+        <input
+          type="text"
+          id="guestName"
+          placeholder="Your Name"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <input
+          type="number"
+          id="guestCount"
+          min="1"
+          max="20"
+          placeholder="Number of Guests"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <select
+          id="attendance"
+          required
+        >
+
+          <option value="">
+            Will you attend?
+          </option>
+
+          <option value="Joyfully Accept">
+            Joyfully Accept
+          </option>
+
+          <option value="Regretfully Decline">
+            Regretfully Decline
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <textarea
+          id="guestMessage"
+          placeholder="Leave a message"
+        ></textarea>
+
+      </div>
+
+
+      <button
+        class="submit-btn"
+        type="submit"
+      >
+        SEND RSVP
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     ✍️ GUESTBOOK
+========================================================= -->
+
+<section class="guestbook">
+
+  <div class="container">
+
+    <div class="section-heading reveal">
+
+      <div class="symbol">
+        ✍
+      </div>
+
+      <h2>
+        Words From Loved Ones
+      </h2>
+
+      <p>
+        LOVE AND BLESSINGS
+      </p>
+
+    </div>
+
+
+    <div class="wishes">
+
+
+      <div class="wish reveal">
+
+        <p id="wish1"></p>
+
+        <small>
+          WITH LOVE ❤️
+        </small>
+
+      </div>
+
+
+      <div class="wish reveal">
+
+        <p id="wish2"></p>
+
+        <small>
+          BEST WISHES
+        </small>
+
+      </div>
+
+
+      <div class="wish reveal">
+
+        <p id="wish3"></p>
+
+        <small>
+          BLESSINGS ✝
+        </small>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     👗 GUEST INFORMATION
+========================================================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-heading reveal">
+
+      <div class="symbol">
+        ✦
+      </div>
+
+      <h2>
+        For Our Guests
+      </h2>
+
+      <p>
+        EVERYTHING YOU NEED TO KNOW
+      </p>
+
+    </div>
+
+
+    <div class="info-grid">
+
+
+      <div class="info-card reveal">
+
+        <h3>
+          Dress Code
+        </h3>
+
+        <p id="dressCode"></p>
+
+      </div>
+
+
+      <div class="info-card reveal">
+
+        <h3>
+          Parking
+        </h3>
+
+        <p id="parking"></p>
+
+      </div>
+
+
+      <div class="info-card reveal">
+
+        <h3>
+          Travel
+        </h3>
+
+        <p id="travel"></p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     📲 SHARE
+========================================================= -->
+
+<section class="share">
+
+  <div class="container reveal">
+
+    <div class="section-heading">
+
+      <div class="symbol">
+        ♡
+      </div>
+
+      <h2>
+        Share Our Joy
+      </h2>
+
+      <p>
+        INVITE YOUR LOVED ONES
+      </p>
+
+    </div>
+
+
+    <button
+      class="share-btn"
+      onclick="shareInvitation()"
+    >
+      SHARE INVITATION
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     🖤 FOOTER
+========================================================= -->
+
+<footer>
+
+  <div class="footer-cross">
+    ✝
+  </div>
+
+  <h2>
+
+    <span id="footerBride">
+      Sneha
+    </span>
+
+    &amp;
+
+    <span id="footerGroom">
+      Sanu
+    </span>
+
+  </h2>
+
+  <p>
+    TWO HEARTS • ONE JOURNEY • FOREVER
+  </p>
+
+  <div
+    class="footer-date"
+    id="footerDate"
+  >
+    13 • 09 • 2026
+  </div>
+
+</footer>
+
+
+<!-- =========================================================
+     ⚙️ MAIN JAVASCRIPT
+     
+     DO NOT EDIT THIS SECTION
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   🛡️ SAFE ELEMENT HELPER
+========================================================= */
+
+function setText(id,value){
+
+  const element =
+    document.getElementById(id);
+
+  if(element){
+    element.textContent = value;
+  }
+
+}
+
+
+/* =========================================================
+   📅 DATE FORMATTER
+========================================================= */
+
+function formatShortDate(dateString){
+
+  const date =
+    new Date(dateString);
+
+  const day =
+    String(
+      date.getDate()
+    ).padStart(2,"0");
+
+  const month =
+    String(
+      date.getMonth() + 1
+    ).padStart(2,"0");
+
+  const year =
+    date.getFullYear();
+
+  return (
+    day +
+    " • " +
+    month +
+    " • " +
+    year
+  );
+
+}
+
+
+/* =========================================================
+   ✨ INITIALIZE CUSTOMER DETAILS
+========================================================= */
+
+setText(
+  "introBride",
+  brideName
+);
+
+setText(
+  "introGroom",
+  groomName
+);
+
+setText(
+  "heroBride",
+  brideName
+);
+
+setText(
+  "heroGroom",
+  groomName
+);
+
+setText(
+  "brideName",
+  brideName
+);
+
+setText(
+  "groomName",
+  groomName
+);
+
+setText(
+  "footerBride",
+  brideName
+);
+
+setText(
+  "footerGroom",
+  groomName
+);
+
+
+/* =========================================================
+   📅 INITIALIZE DATES
+========================================================= */
+
+setText(
+  "introDate",
+  formatShortDate(weddingDate)
+);
+
+setText(
+  "heroDate",
+  weddingDateText
+);
+
+setText(
+  "footerDate",
+  formatShortDate(weddingDate)
+);
+
+setText(
+  "story4Label",
+  weddingDateText.toUpperCase()
+);
+
+setText(
+  "ceremonyDate",
+  ceremonyDate
+);
+
+setText(
+  "receptionDate",
+  receptionDate
+);
+
+
+/* =========================================================
+   ✝️ INITIALIZE BLESSING
+========================================================= */
+
+setText(
+  "introSubtitle",
+  invitationSubtitle
+);
+
+setText(
+  "blessingText",
+  blessingText
+);
+
+setText(
+  "blessingBottom",
+  blessingBottomText
+);
+
+
+/* =========================================================
+   👰🤵 INITIALIZE PHOTOS
+========================================================= */
+
+const bridePhotoElement =
+  document.getElementById("bridePhoto");
+
+if(bridePhotoElement){
+  bridePhotoElement.src =
+    bridePhoto;
+}
+
+
+const groomPhotoElement =
+  document.getElementById("groomPhoto");
+
+if(groomPhotoElement){
+  groomPhotoElement.src =
+    groomPhoto;
+}
+
+
+/* =========================================================
+   🖼️ HERO IMAGE
+========================================================= */
+
+const heroElement =
+  document.getElementById("hero");
+
+if(heroElement){
+
+  heroElement.style.backgroundImage =
+    "linear-gradient(" +
+    "rgba(38,26,23,.32)," +
+    "rgba(38,26,23,.5)" +
+    "),url('" +
+    heroPhoto +
+    "')";
+
+}
+
+
+/* =========================================================
+   ❤️ LOVE STORY
+========================================================= */
+
+setText(
+  "story1Label",
+  story1Label
+);
+
+setText(
+  "story1Title",
+  story1Title
+);
+
+setText(
+  "story1Text",
+  story1Text
+);
+
+
+setText(
+  "story2Label",
+  story2Label
+);
+
+setText(
+  "story2Title",
+  story2Title
+);
+
+setText(
+  "story2Text",
+  story2Text
+);
+
+
+setText(
+  "story3Label",
+  story3Label
+);
+
+setText(
+  "story3Title",
+  story3Title
+);
+
+setText(
+  "story3Text",
+  story3Text
+);
+
+
+setText(
+  "story4Label",
+  story4Label
+);
+
+setText(
+  "story4Title",
+  story4Title
+);
+
+setText(
+  "story4Text",
+  story4Text
+);
+
+
+/* =========================================================
+   ⛪ CEREMONY
+========================================================= */
+
+setText(
+  "ceremonyTitle",
+  ceremonyTitle
+);
+
+setText(
+  "churchName",
+  churchName
+);
+
+setText(
+  "churchLocation",
+  churchLocation
+);
+
+
+const churchMapButton =
+  document.getElementById(
+    "churchMapButton"
+  );
+
+if(churchMapButton){
+
+  churchMapButton.href =
+    churchMapsLink;
+
+}
+
+
+/* =========================================================
+   🥂 RECEPTION
+========================================================= */
+
+setText(
+  "receptionName",
+  receptionName
+);
+
+setText(
+  "receptionLocation",
+  receptionLocation
+);
+
+
+const receptionMapButton =
+  document.getElementById(
+    "receptionMapButton"
+  );
+
+if(receptionMapButton){
+
+  receptionMapButton.href =
+    receptionMapsLink;
+
+}
+
+
+/* =========================================================
+   📍 MAIN LOCATION
+========================================================= */
+
+setText(
+  "mainLocationText",
+  mainLocation.toUpperCase()
+);
+
+
+const locationParts =
+  mainLocation.split(",");
+
+
+setText(
+  "locationName",
+  locationParts[0].trim()
+);
+
+
+setText(
+  "locationAddress",
+  locationParts
+    .slice(1)
+    .join(",")
+    .trim() +
+    ", Kerala"
+);
+
+
+const mainMapButton =
+  document.getElementById(
+    "mainMapButton"
+  );
+
+if(mainMapButton){
+
+  mainMapButton.href =
+    mainLocationMaps;
+
+}
+
+
+/* =========================================================
+   🎵 MUSIC
+========================================================= */
+
+const musicSource =
+  document.getElementById(
+    "musicSource"
+  );
+
+if(musicSource){
+
+  musicSource.src =
+    musicFile;
+
+}
+
+
+/* =========================================================
+   📸 GALLERY
+     
+     IMPORTANT:
+     Gallery is created BEFORE observer setup.
+     This fixes the loading-screen problem.
+========================================================= */
+
+const gallery =
+  document.getElementById(
+    "gallery"
+  );
+
+
+if(gallery){
+
+  photos.forEach(
+    function(photo){
+
+      const item =
+        document.createElement(
+          "div"
+        );
+
+      item.className =
+        "gallery-item reveal";
+
+
+      const image =
+        document.createElement(
+          "img"
+        );
+
+
+      image.src =
+        photo;
+
+
+      image.alt =
+        "Wedding memory";
+
+
+      image.loading =
+        "lazy";
+
+
+      image.onclick =
+        function(){
+
+          openLightbox(photo);
+
+        };
+
+
+      item.appendChild(
+        image
+      );
+
+
+      gallery.appendChild(
+        item
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   ✍️ GUESTBOOK
+========================================================= */
+
+setText(
+  "wish1",
+  wish1
+);
+
+setText(
+  "wish2",
+  wish2
+);
+
+setText(
+  "wish3",
+  wish3
+);
+
+
+/* =========================================================
+   👗 EXTRA INFORMATION
+========================================================= */
+
+setText(
+  "dressCode",
+  dressCodeText
+);
+
+setText(
+  "parking",
+  parkingText
+);
+
+setText(
+  "travel",
+  travelText
+);
+
+setText(
+  "rsvpSubtitle",
+  rsvpTitle
+);
+
+
+/* =========================================================
+   🔄 LOADER
+     
+     SAFETY FEATURE:
+     Even if an image is missing, the loader will
+     still disappear.
+========================================================= */
+
+window.addEventListener(
+  "load",
+  function(){
+
+    setTimeout(
+      function(){
+
+        const loader =
+          document.getElementById(
+            "loader"
+          );
+
+        if(loader){
+
+          loader.classList.add(
+            "hide"
+          );
+
+        }
+
+      },
+      700
+    );
+
+  }
+);
+
+
+/* =========================================================
+   🛡️ LOADER FAILSAFE
+     
+     If something unexpected happens while loading,
+     don't leave the customer stuck forever.
+========================================================= */
+
+setTimeout(
+  function(){
+
+    const loader =
+      document.getElementById(
+        "loader"
+      );
+
+    if(loader){
+
+      loader.classList.add(
+        "hide"
+      );
+
+    }
+
+  },
+  4000
+);
+
+
+/* =========================================================
+   💌 OPEN INVITATION
+========================================================= */
+
+function openInvitation(){
+
+  const intro =
+    document.getElementById(
+      "intro"
+    );
+
+  if(intro){
+
+    intro.classList.add(
+      "opened"
+    );
+
+  }
+
+
+  document.body.classList.remove(
+    "locked"
+  );
+
+
+  createPetalBurst();
+
+
+  const music =
+    document.getElementById(
+      "weddingMusic"
+    );
+
+
+  if(music){
+
+    music.volume =
+      0.35;
+
+
+    music.play()
+      .then(
+        function(){
+
+          const musicButton =
+            document.getElementById(
+              "musicBtn"
+            );
+
+          if(musicButton){
+
+            musicButton.classList.add(
+              "playing"
+            );
+
+          }
+
+        }
+      )
+      .catch(
+        function(){
+
+          console.log(
+            "Music playback blocked."
+          );
+
+        }
+      );
+
+  }
+
+}
+
+
+/* =========================================================
+   🎵 MUSIC CONTROL
+========================================================= */
+
+function toggleMusic(){
+
+  const music =
+    document.getElementById(
+      "weddingMusic"
+    );
+
+
+  const button =
+    document.getElementById(
+      "musicBtn"
+    );
+
+
+  if(!music){
+
+    return;
+
+  }
+
+
+  if(music.paused){
+
+    music.play()
+      .then(
+        function(){
+
+          button.classList.add(
+            "playing"
+          );
+
+        }
+      )
+      .catch(
+        function(){
+
+          alert(
+            "Please make sure " +
+            musicFile +
+            " exists."
+          );
+
+        }
+      );
+
+  }
+
+  else{
+
+    music.pause();
+
+    button.classList.remove(
+      "playing"
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   🌸 CREATE PETAL
+========================================================= */
+
+function createPetal(){
+
+  const container =
+    document.getElementById(
+      "petals"
+    );
+
+
+  if(!container){
+
+    return;
+
+  }
+
+
+  const petal =
+    document.createElement(
+      "div"
+    );
+
+
+  petal.className =
+    "petal";
+
+
+  petal.style.left =
+    Math.random() * 100 +
+    "%";
+
+
+  petal.style.animationDuration =
+    (
+      5 +
+      Math.random() * 6
+    ) +
+    "s";
+
+
+  petal.style.transform =
+    "rotate(" +
+    Math.random() * 360 +
+    "deg)";
+
+
+  container.appendChild(
+    petal
+  );
+
+
+  setTimeout(
+    function(){
+
+      petal.remove();
+
+    },
+    12000
+  );
+
+}
+
+
+setInterval(
+  createPetal,
+  1100
+);
+
+
+/* =========================================================
+   🌸 PETAL BURST
+========================================================= */
+
+function createPetalBurst(){
+
+  for(
+    let i = 0;
+    i < 18;
+    i++
+  ){
+
+    setTimeout(
+      function(){
+
+        createPetal();
+
+      },
+      i * 80
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   ⏳ COUNTDOWN
+========================================================= */
+
+const countdownDate =
+  new Date(
+    weddingDate
+  ).getTime();
+
+
+function updateCountdown(){
+
+  const now =
+    new Date().getTime();
+
+
+  const distance =
+    countdownDate -
+    now;
+
+
+  const daysElement =
+    document.getElementById(
+      "days"
+    );
+
+  const hoursElement =
+    document.getElementById(
+      "hours"
+    );
+
+  const minutesElement =
+    document.getElementById(
+      "minutes"
+    );
+
+  const secondsElement =
+    document.getElementById(
+      "seconds"
+    );
+
+
+  if(distance <= 0){
+
+    daysElement.innerText =
+      "00";
+
+    hoursElement.innerText =
+      "00";
+
+    minutesElement.innerText =
+      "00";
+
+    secondsElement.innerText =
+      "00";
+
+
+    document
+      .getElementById(
+        "weddingDayMessage"
+      )
+      .style.display =
+      "block";
+
+
+    return;
+
+  }
+
+
+  const days =
+    Math.floor(
+      distance /
+      (1000 * 60 * 60 * 24)
+    );
+
+
+  const hours =
+    Math.floor(
+      (
+        distance %
+        (1000 * 60 * 60 * 24)
+      ) /
+      (1000 * 60 * 60)
+    );
+
+
+  const minutes =
+    Math.floor(
+      (
+        distance %
+        (1000 * 60 * 60)
+      ) /
+      (1000 * 60)
+    );
+
+
+  const seconds =
+    Math.floor(
+      (
+        distance %
+        (1000 * 60)
+      ) /
+      1000
+    );
+
+
+  daysElement.innerText =
+    String(days).padStart(
+      2,
+      "0"
+    );
+
+
+  hoursElement.innerText =
+    String(hours).padStart(
+      2,
+      "0"
+    );
+
+
+  minutesElement.innerText =
+    String(minutes).padStart(
+      2,
+      "0"
+    );
+
+
+  secondsElement.innerText =
+    String(seconds).padStart(
+      2,
+      "0"
+    );
+
+}
+
+
+updateCountdown();
+
+
+setInterval(
+  updateCountdown,
+  1000
+);
+
+
+/* =========================================================
+   ✨ SCROLL OBSERVER
+     
+     IMPORTANT:
+     Created AFTER gallery items exist.
+========================================================= */
+
+const observer =
+  new IntersectionObserver(
+
+    function(entries){
+
+      entries.forEach(
+        function(entry){
+
+          if(
+            entry.isIntersecting
+          ){
+
+            entry.target
+              .classList
+              .add(
+                "visible"
+              );
+
+          }
+
+        }
+      );
+
+    },
+
+    {
+      threshold:0.12
+    }
+
+  );
+
+
+/* =========================================================
+   ✨ OBSERVE ALL EXISTING REVEAL ELEMENTS
+========================================================= */
+
+document
+  .querySelectorAll(
+    ".reveal"
+  )
+  .forEach(
+    function(element){
+
+      observer.observe(
+        element
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   🔍 OPEN LIGHTBOX
+========================================================= */
+
+function openLightbox(src){
+
+  const lightbox =
+    document.getElementById(
+      "lightbox"
+    );
+
+
+  const image =
+    document.getElementById(
+      "lightboxImage"
+    );
+
+
+  if(lightbox && image){
+
+    image.src =
+      src;
+
+    lightbox.classList.add(
+      "show"
+    );
+
+    document.body.classList.add(
+      "locked"
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   ❌ CLOSE LIGHTBOX
+========================================================= */
+
+function closeLightbox(){
+
+  const lightbox =
+    document.getElementById(
+      "lightbox"
+    );
+
+
+  if(lightbox){
+
+    lightbox.classList.remove(
+      "show"
+    );
+
+  }
+
+
+  document.body.classList.remove(
+    "locked"
+  );
+
+}
+
+
+/* =========================================================
+   💌 RSVP → WHATSAPP
+========================================================= */
+
+function submitRSVP(event){
+
+  event.preventDefault();
+
+
+  const name =
+    document
+      .getElementById(
+        "guestName"
+      )
+      .value;
+
+
+  const guests =
+    document
+      .getElementById(
+        "guestCount"
+      )
+      .value;
+
+
+  const attendance =
+    document
+      .getElementById(
+        "attendance"
+      )
+      .value;
+
+
+  const message =
+    document
+      .getElementById(
+        "guestMessage"
+      )
+      .value;
+
+
+  const text =
+
+    "Wedding RSVP\n\n" +
+
+    "Wedding: " +
+    brideName +
+    " & " +
+    groomName +
+
+    "\n\nName: " +
+    name +
+
+    "\nGuests: " +
+    guests +
+
+    "\nAttendance: " +
+    attendance +
+
+    "\nMessage: " +
+    message;
+
+
+  const whatsappURL =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(
+      text
+    );
+
+
+  window.open(
+    whatsappURL,
+    "_blank"
+  );
+
+}
+
+
+/* =========================================================
+   📲 SHARE INVITATION
+========================================================= */
+
+function shareInvitation(){
+
+  const shareData = {
+
+    title:
+      brideName +
+      " & " +
+      groomName +
+      " — Wedding Invitation",
+
+    text:
+      "You are invited to celebrate the wedding of " +
+      brideName +
+      " & " +
+      groomName +
+      " on " +
+      weddingDateText +
+      " ❤️",
+
+    url:
+      window.location.href
+
+  };
+
+
+  if(
+    navigator.share
+  ){
+
+    navigator
+      .share(
+        shareData
+      )
+      .catch(
+        function(){}
+      );
+
+  }
+
+  else if(
+    navigator.clipboard
+  ){
+
+    navigator.clipboard
+      .writeText(
+        window.location.href
+      )
+      .then(
+        function(){
+
+          alert(
+            "Invitation link copied! ❤️"
+          );
+
+        }
+      );
+
+  }
+
+  else{
+
+    prompt(
+      "Copy this invitation link:",
+      window.location.href
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   ⌨️ ESCAPE KEY
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(
+      event.key === "Escape"
+    ){
+
+      closeLightbox();
+
+    }
+
+  }
+);
+
+
+</script>
+
+</body>
+
+</html>
